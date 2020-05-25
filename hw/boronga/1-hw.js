@@ -1,5 +1,9 @@
 /*
+<<<<<<< HEAD
 * matrix 复杂度为 O(M*N*T)
+=======
+* matrix 复杂度为 O(n^3)
+>>>>>>> 第一次作业提交
 */
 function matrix(array1, array2){
     let matrixArray = [];
@@ -42,18 +46,20 @@ let array4 = [
  [2323,543],[231,653],[1,0]
 ]
 
+
 // console.log(matrix(array1,array2))
 // console.log(matrix(array3,array4))
+
 
 /**
  * shuffle O(n^2)
  */
-let count = 0;
 function shuffle(array,newArray){
     
     while (array.length != 0) {
          // 获取number
          let num = getNum(array); // 1
+
         
         // 把获取的放进去
         putNumIntoArray(num,newArray);
@@ -66,10 +72,9 @@ function getNum(array){
     return array.splice(0,1)[0];
 }
 
-function putNumIntoArray(num,newArray){ // n
-    count++;
+function putNumIntoArray(num,newArray){
     let size = Math.floor(Math.random()*newArray.length)
-    if(newArray[size]){
+    if(newArray[size] !== '0'){
         putNumIntoArray(num,newArray)
     }else{
         newArray[size] = num
@@ -112,13 +117,15 @@ for(let i = 0; i <10; i++){
     results.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 }
 
-for(let i = 0; i<10; i++){
+
+for(let i = 0; i<100; i++){
     let randomArray1 = [0,1,2,3,4,5,6,7,8,9]
-    let shuffleArray1 = [, , , , , , , , , ]
-    shuffle(randomArray1,shuffleArray1)
+    let shuffleArray1 = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
+    shuffleArray1 = shuffle(randomArray1,shuffleArray1)
     countNumInArray(results,shuffleArray1)
 }
-console.log(results)
+
+
 console.log(d(results));
 
 
