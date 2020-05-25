@@ -1,13 +1,7 @@
 /*
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 * matrix 复杂度为 O(M*N*T) M 代表 array1 的 行数 N 代表 N的列数 T代表array
-=======
-* matrix 复杂度为 O(n^3)
->>>>>>> 第一次作业提交
-=======
-* matrix 复杂度为 O(M*N*T)
->>>>>>> 快排测试bug测试
+
 */
 function matrix(array1, array2){
     let matrixArray = [];
@@ -50,9 +44,6 @@ let array4 = [
  [2323,543],[231,653],[1,0]
 ]
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-
 // console.log(matrix(array1,array2))
 // console.log(matrix(array3,array4))
 
@@ -69,27 +60,6 @@ function shuffle(array){
          let num = getNum(array); 
         // 把获取的放进去
         putNumIntoArray(num,newArray,set);
-=======
-console.log(matrix(array1,array2))
-console.log(matrix(array3,array4))
-=======
-// console.log(matrix(array1,array2))
-// console.log(matrix(array3,array4))
->>>>>>> 快排测试bug测试
-
-/**
- * shuffle O(n^2)
- */
-let count = 0;
-function shuffle(array,newArray){
-    
-    while (array.length != 0) {
-         // 获取number
-         let num = getNum(array); // 1
-        
-        // 把获取的放进去
-        putNumIntoArray(num,newArray);
->>>>>>> 第一次作业提交
     }
     return newArray;
 }
@@ -99,8 +69,6 @@ function getNum(array){
     return array.splice(0,1)[0];
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 function putNumIntoArray(num,newArray,set){
     let size = Math.floor(Math.random()*newArray.length)
@@ -109,19 +77,7 @@ function putNumIntoArray(num,newArray,set){
     }
     set.add(size)
     newArray[size] = num
-=======
-function putNumIntoArray(num,newArray){
-=======
-function putNumIntoArray(num,newArray){ // n
-    count++;
->>>>>>> 快排测试bug测试
-    let size = Math.floor(Math.random()*newArray.length)
-    if(newArray[size]){
-        putNumIntoArray(num,newArray)
-    }else{
-        newArray[size] = num
-    }
->>>>>>> 第一次作业提交
+
 }
 
 function d(results){
@@ -160,8 +116,6 @@ for(let i = 0; i <10; i++){
     results.push([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 for(let i = 0; i<10; i++){
     let randomArray1 = [0,1,2,3,4,5,6,7,8,9]
@@ -171,19 +125,6 @@ for(let i = 0; i<10; i++){
 
 
 // console.log(d(results));
-=======
-for(let i = 0; i<100; i++){
-=======
-for(let i = 0; i<10; i++){
->>>>>>> 快排测试bug测试
-    let randomArray1 = [0,1,2,3,4,5,6,7,8,9]
-    let shuffleArray1 = [, , , , , , , , , ]
-    shuffle(randomArray1,shuffleArray1)
-    countNumInArray(results,shuffleArray1)
-}
-console.log(results)
-console.log(d(results));
 
->>>>>>> 第一次作业提交
 
 
