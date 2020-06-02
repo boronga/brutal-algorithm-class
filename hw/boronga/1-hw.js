@@ -1,9 +1,5 @@
 /*
-<<<<<<< HEAD
-* matrix 复杂度为 O(M*N*T)
-=======
-* matrix 复杂度为 O(n^3)
->>>>>>> 第一次作业提交
+* matrix 复杂度为 O(M*N*T) M 代表 array1 的 行数 N 代表 N的列数 T代表array
 */
 function matrix(array1, array2){
     let matrixArray = [];
@@ -52,17 +48,17 @@ let array4 = [
 
 
 /**
- * shuffle O(n^2)
+ * shuffle O(M*N) M 代表shuffle的复杂度 N 代表putNumIntoArray的复杂度
  */
-function shuffle(array,newArray){
-    
+function shuffle(array){
+    let newArray = new Array(array.length)
+    // 记录已经存了的位置
+    let set = new Set()
     while (array.length != 0) {
          // 获取number
-         let num = getNum(array); // 1
-
-        
+         let num = getNum(array); 
         // 把获取的放进去
-        putNumIntoArray(num,newArray);
+        putNumIntoArray(num,newArray,set);
     }
     return newArray;
 }
@@ -72,13 +68,14 @@ function getNum(array){
     return array.splice(0,1)[0];
 }
 
-function putNumIntoArray(num,newArray){
+
+function putNumIntoArray(num,newArray,set){
     let size = Math.floor(Math.random()*newArray.length)
-    if(newArray[size] !== '0'){
-        putNumIntoArray(num,newArray)
-    }else{
-        newArray[size] = num
+    while(set.has(size)){
+        size = Math.floor(Math.random()*newArray.length)
     }
+    set.add(size)
+    newArray[size] = num
 }
 
 function d(results){
@@ -118,15 +115,13 @@ for(let i = 0; i <10; i++){
 }
 
 
-for(let i = 0; i<100; i++){
+for(let i = 0; i<10; i++){
     let randomArray1 = [0,1,2,3,4,5,6,7,8,9]
-    let shuffleArray1 = ['0', '0', '0', '0', '0', '0', '0', '0', '0', '0']
-    shuffleArray1 = shuffle(randomArray1,shuffleArray1)
+    let shuffleArray1 = shuffle(randomArray1)
     countNumInArray(results,shuffleArray1)
 }
 
 
-console.log(d(results));
-
+// console.log(d(results));
 
 
