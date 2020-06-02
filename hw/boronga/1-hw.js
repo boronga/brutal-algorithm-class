@@ -1,7 +1,6 @@
 /*
 
 * matrix 复杂度为 O(M*N*T) M 代表 array1 的 行数 N 代表 N的列数 T代表array
-
 */
 function matrix(array1, array2){
     let matrixArray = [];
@@ -44,8 +43,9 @@ let array4 = [
  [2323,543],[231,653],[1,0]
 ]
 
-// console.log(matrix(array1,array2))
-// console.log(matrix(array3,array4))
+
+console.log(matrix(array1,array2))
+console.log(matrix(array3,array4))
 
 
 /**
@@ -77,7 +77,6 @@ function putNumIntoArray(num,newArray,set){
     }
     set.add(size)
     newArray[size] = num
-
 }
 
 function d(results){
@@ -123,8 +122,6 @@ for(let i = 0; i<10; i++){
     countNumInArray(results,shuffleArray1)
 }
 
-
 // console.log(d(results));
-
 
 
