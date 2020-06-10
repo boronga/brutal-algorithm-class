@@ -75,19 +75,106 @@ function postList(list){
     return postInternal(list.head)
 }
 
-let list = new LinkedList()
+/* let list = new LinkedList()
 list.append('test')
 list.append('test2')
 list.append('test3')
 list.append('test4')
 // console.log(list)
-postList(list)
+postList(list) */
     
 
 
 
 // # 可中途中断的树遍历
 // 第五课中我们学习了二叉树。写了前、中、后序遍历。但是都是一次性遍历所有的节点。在日常的软件工程中，通常不用遍历所有的数据，遇到某些条件可以终止。
+class Element{
+    constructor(data){
+        this.data = data; 
+        this.left = null;
+        this.right = null;
+    }
+}
+class Tree{
+    constructor(node){
+        this.head = node;
+    }
+    append(node){
+        // 添加到左分支还是右分支
+        this.appendNode(node,this.head)
+    }
+
+    appendNode(node, currentNode){
+        if(currentNode.data >= node.data){
+            if(currentNode.left === null){
+                currentNode.left = node
+            }else{
+                this.appendNode(node,currentNode.left)
+            }
+        }else{
+            if(currentNode.right === null){
+                currentNode.right = node
+            }else{
+                this.appendNode(node,currentNode.right)
+            }
+        }
+    }
+    traversal(order, f){
+        this.traversalInner(order,f,this.head)
+    }
+    traversalInner(order,f,currentNode){
+        if(!currentNode){
+            return;
+        }
+        if(order === 'pre'){
+            if(f(currentNode)){
+                console.log(currentNode)
+                return;
+            }
+        }
+        this.traversalInner(order,f,currentNode.left)
+        if(order === 'in'){
+            if(f(currentNode)){
+                console.log(currentNode)
+                return;
+            }
+        }
+        this.traversalInner(order,f,currentNode.right)
+        if(order === 'post'){
+            if(f(currentNode)){
+                console.log(currentNode)
+                return;
+            }
+        }
+    }
+} 
+
+function preConsole(message,element){
+    if(!element){
+        return;
+    }
+    if(message === 'pre'){
+        console.log(element.data)
+    }
+    preConsole(message,element.left)
+    if(message === 'in'){
+        console.log(element.data)
+    }
+    preConsole(message,element.right)
+    if(message === 'post'){
+        console.log(element.data)
+    }
+
+}
+
+let element = new Element(5)
+let tree = new Tree(element)
+tree.append(new Element(9))
+tree.append(new Element(19))
+tree.append(new Element(1))
+tree.append(new Element(0))
+tree.append(new Element(2))
+preConsole('pre',element)
 
 // 请写一个可以中途终止的遍历。有如下两种接口之一：
 // ### 接口 1
@@ -100,7 +187,9 @@ postList(list)
 // })
 // ```
 // 这里的遍历函数接受一个字符串表示哪种顺序，和一个匿名函数。每遍历一个节点就执行这个函数。如果函数返回 true 则继续执行。如果返回 false，则停止遍历。
-
+tree.traversal('pre',function(element){
+    return element.data > 6
+})
 // ### 接口 2
 // 如果你对设计范式有一定的了解，那么，请将上面的实现改为迭代器。
 // ```js
